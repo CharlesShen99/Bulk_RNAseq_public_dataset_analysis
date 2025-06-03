@@ -1,8 +1,12 @@
 Bulk RNAseq public dataset analysis
-Download R1 and R2 files
+Download R1 and R2 files and decompress using gunzip
 trimming: trim_galore
 alignment: hisat2
-featureCounts -p -a
+featureCounts -p -a 
+
+```
+trim_galore --paired R1.fastq R2.fastq
+```
 
 wget ftp://ftp.ensembl.org/pub/release-102/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
 gunzip Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
@@ -14,6 +18,11 @@ gunzip Mus_musculus.GRCm38.102.gtf.gz
 mv Mus_musculus.GRCm38.dna.primary_assembly.fa mm10.fa
 mv Mus_musculus.GRCm38.102.gtf mm10.gtf
 
-```
+``` 
 hisat2-build mm10.fa mm10_index  
+hisat2 -x mm10_index \                               
+  -1 MMM_S1_R1_val_1.fq \
+  -2 MMM_S1_R2_val_2.fq \
+  -S MMM_S1.sam \
+  --threads 4
 ```
