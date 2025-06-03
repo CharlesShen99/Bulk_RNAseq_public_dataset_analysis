@@ -1,11 +1,11 @@
-Bulk RNAseq public dataset analysis
+# Bulk RNAseq public dataset analysis
 Download R1 and R2 files and decompress using gunzip
 trimming: trim_galore
 alignment: hisat2
 featureCounts -p -a 
 
 ```
-`trim_galore --paired R1.fastq R2.fastq`
+trim_galore --paired R1.fastq R2.fastq
 ```
 
 wget ftp://ftp.ensembl.org/pub/release-102/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
