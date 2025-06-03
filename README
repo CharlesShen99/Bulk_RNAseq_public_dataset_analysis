@@ -1,0 +1,19 @@
+Bulk RNAseq public dataset analysis
+Download R1 and R2 files
+trimming: trim_galore
+alignment: hisat2
+featureCounts -p -a
+
+wget ftp://ftp.ensembl.org/pub/release-102/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
+gunzip Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
+
+Annotation GTF
+wget ftp://ftp.ensembl.org/pub/release-102/gtf/mus_musculus/Mus_musculus.GRCm38.102.gtf.gz
+gunzip Mus_musculus.GRCm38.102.gtf.gz
+
+mv Mus_musculus.GRCm38.dna.primary_assembly.fa mm10.fa
+mv Mus_musculus.GRCm38.102.gtf mm10.gtf
+
+```
+hisat2-build mm10.fa mm10_index  
+```
