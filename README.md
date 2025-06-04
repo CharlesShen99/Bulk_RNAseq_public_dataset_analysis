@@ -1,7 +1,10 @@
 # Bulk RNAseq public dataset analysis
 Download R1 and R2 files and decompress using gunzip
+
 trimming: trim_galore
+
 alignment: hisat2
+
 featureCounts -p -a 
 
 ```
@@ -33,8 +36,14 @@ hisat2-build mm10.fa mm10_index
 # Align reads to the genome 
 hisat2 -x mm10_index \ -1 R1_val_1.fq \ -2 R2_val_2.fq \ -S S1.sam \ --threads 4
 ```
+
 ```
+# Convert to bam file
 samtools view -bS S1.sam | samtools sort -o S1.sorted.bam
+```
+
+```
+# Convert to sorted bam file
 samtools index S1.sorted.bam
 ```
 ```
