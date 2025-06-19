@@ -49,3 +49,12 @@ samtools index S1.sorted.bam
 ```
 featureCounts -p -a mm10.gtf -o counts1.txt S1.sorted.bam
 ```
+Download GENCODE vM17 GTF
+```
+rsync -avz rsync://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M17/gencode.vM17.annotation.gtf.gz ./
+gunzip gencode.vM17.annotation.gtf.gz
+```
+Extract splice sites
+```
+hisat2_extract_splice_sites.py gencode.vM17.annotation.gtf > mm10_splicesites.txt
+```
