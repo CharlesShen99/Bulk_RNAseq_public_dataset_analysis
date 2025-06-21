@@ -58,3 +58,24 @@ Extract splice sites
 ```
 hisat2_extract_splice_sites.py gencode.vM17.annotation.gtf > mm10_splicesites.txt
 ```
+```
+# sample_L001_R1.fastq.gz
+# sample_L001_R2.fastq.gz
+# ...
+# Combine Reads
+cat sample_L00{1,2,3,4}_R1.fastq.gz > sample_combined_R1.fastq.gz
+cat sample_L00{1,2,3,4}_R2.fastq.gz > sample_combined_R2.fastq.gz
+```
+```
+# Step 1: Filter for mapped, MAPQ ≥ 20
+samtools view -h -F 4 -q 20 -b sample.sam > sample.q20.bam
+
+# Step 2: Remove non-unique reads using NH tag
+samtools view -h sample.q20.bam | grep -v 'NH:i:[2-9]' | samtools view -bS - > sample.unique.bam
+
+# Step 3: Sort and index
+samtools sort -@ 8 -o sample.unique.sorted.bam sample.unique.bam
+samtools index sample.unique.sorted.bam
+```
+
+
