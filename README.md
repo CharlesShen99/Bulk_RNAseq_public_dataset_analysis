@@ -9,6 +9,8 @@ featureCounts -p -a
 
 ```
 trim_galore --paired R1.fastq R2.fastq
+# OR
+trim_galore --cores 4 --paired sample_R1.fastq.gz sample_R2.fastq.gz
 ```
 ```
 # Download GRCm38 mm10 reference genome
