@@ -11,7 +11,13 @@ featureCounts -p -a
 trim_galore --paired R1.fastq R2.fastq
 # OR
 trim_galore --cores 4 --paired sample_R1.fastq.gz sample_R2.fastq.gz
+
+# Download GRCm39 transcripts
+https://www.gencodegenes.org/mouse/release_M31.html
 ```
+
+
+
 ```
 # Download GRCm38 mm10 reference genome
 wget ftp://ftp.ensembl.org/pub/release-102/fasta/mus_musculus/dna/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
